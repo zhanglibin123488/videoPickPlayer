@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:exo="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <com.zlb.video.play.CustomExoPlayerView
         android:id="@+id/player_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="true" />
+        android:focusable="true"
+        exo:use_texture_view="false"/>
 </LinearLayout>

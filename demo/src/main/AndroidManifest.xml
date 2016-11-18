@@ -54,7 +54,7 @@
       android:theme="@style/SplashTheme"
       android:name="com.zlb.video.play.ExoApplication">
 
-    <activity android:name="com.zlb.video.play.MediaPlayActivity" android:screenOrientation="portrait"
+    <activity android:name="com.zlb.video.play.MediaPlayActivity" android:screenOrientation="sensorPortrait"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"/>
     <activity android:name="com.zlb.video.videopick.MediaPickActivity"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"

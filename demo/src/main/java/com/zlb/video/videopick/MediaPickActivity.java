@@ -101,6 +101,11 @@ public class MediaPickActivity extends Activity implements LoaderManager.LoaderC
     }
     private ContentResolver contentResolver;
     private BitmapFactory.Options options = new BitmapFactory.Options();
+    String[] thumbColumns = new String[]{
+            MediaStore.Video.Thumbnails.DATA,
+            MediaStore.Video.Thumbnails.VIDEO_ID
+    };
+    String selection = MediaStore.Video.Thumbnails.VIDEO_ID +"=?";
     private void getVideoThumb(final List<VideoBean> videoBeanList){
         contentResolver = getContentResolver();
         options.inDither = false;
@@ -111,7 +116,7 @@ public class MediaPickActivity extends Activity implements LoaderManager.LoaderC
             pools.execute(new Runnable() {
                 @Override
                 public void run() {
-                    String thumbPath = getVideoImage(String.valueOf(videoBean.getId()));//某些破手机需要150多毫秒执行这个方法，比如阿姣的荣耀3c，所以还是放到线程中去执行吧
+                    /*String thumbPath = getVideoImage(String.valueOf(videoBean.getId()));//某些破手机需要150多毫秒执行这个方法，比如阿姣的荣耀3c，所以还是放到线程中去执行吧
                     //在适配器里面频繁执行读取文件等IO操作，建议放到线程中执行，以免有些机器会卡主线程
                     if (isNull(thumbPath)){
 //                        CommonTools.showErrorLog("haha=="+"本地没有，根据id去取");
@@ -137,6 +142,12 @@ public class MediaPickActivity extends Activity implements LoaderManager.LoaderC
 //                                CommonTools.showErrorLog("haha=="+"没保存成功");
 //                            }
                         }
+                    }*/
+                    String thumbPath = "";
+                    String[] selectionArgs = new String[]{String.valueOf(videoBean.getId())};
+                    Cursor thumbCursor = MediaPickActivity.this.managedQuery(MediaStore.Video.Thumbnails.EXTERNAL_CONTENT_URI, thumbColumns, selection, selectionArgs, null);
+                    if(thumbCursor.moveToFirst()){
+                        thumbPath = thumbCursor.getString(thumbCursor.getColumnIndexOrThrow(MediaStore.Video.Thumbnails.DATA));
                     }
                     videoBean.setThumbImage(thumbPath);
                     if (adapter != null){

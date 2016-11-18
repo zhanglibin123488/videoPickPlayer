@@ -2,6 +2,7 @@ package com.zlb.video.play;
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
@@ -25,6 +26,7 @@ public class ExoApplication extends Application {
         super.onCreate();
         single = this;
         userAgent = Util.getUserAgent(this, "exo");
+        Log.e("test", userAgent);
         ProgressiveJpegConfig config = new ProgressiveJpegConfig() {
             @Override
             public int getNextScanNumberToDecode(int i) {

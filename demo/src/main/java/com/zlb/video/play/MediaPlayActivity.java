@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.zlb.android.video.R;
 
@@ -21,6 +22,8 @@ public class MediaPlayActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         uri = getIntent().getData();
+        Log.i(TAG, "uri======"+uri.toString());
+//        uri = Uri.parse("file:///android_asset/test.mp4");
         setContentView(R.layout.activity_mediaplay);
         simpleExoPlayerView = (CustomExoPlayerView) findViewById(R.id.player_view);
         simpleExoPlayerView.setUri(uri, true);

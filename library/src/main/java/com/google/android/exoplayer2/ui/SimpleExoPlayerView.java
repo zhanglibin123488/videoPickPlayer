@@ -64,7 +64,7 @@ public class SimpleExoPlayerView extends FrameLayout {
   public SimpleExoPlayerView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
 
-    boolean useTextureView = false;
+    boolean useTextureView = true;
     int resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT;
     int rewindMs = PlaybackControlView.DEFAULT_REWIND_MS;
     int fastForwardMs = PlaybackControlView.DEFAULT_FAST_FORWARD_MS;
@@ -74,8 +74,7 @@ public class SimpleExoPlayerView extends FrameLayout {
           R.styleable.SimpleExoPlayerView, 0, 0);
       try {
         useController = a.getBoolean(R.styleable.SimpleExoPlayerView_use_controller, useController);
-        useTextureView = a.getBoolean(R.styleable.SimpleExoPlayerView_use_texture_view,
-            useTextureView);
+        useTextureView = a.getBoolean(R.styleable.SimpleExoPlayerView_use_texture_view, useTextureView);
         resizeMode = a.getInt(R.styleable.SimpleExoPlayerView_resize_mode,
             AspectRatioFrameLayout.RESIZE_MODE_FIT);
         rewindMs = a.getInt(R.styleable.SimpleExoPlayerView_rewind_increment, rewindMs);
